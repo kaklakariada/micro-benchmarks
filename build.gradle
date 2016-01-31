@@ -34,21 +34,3 @@ license {
     ext.name = 'Christoph Pirkl'
     ext.email = 'christoph at users.sourceforge.net'
 }
-
-eclipse {
-	classpath {
-		downloadSources = true
-		containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
-		def javaVersion = project.sourceCompatibility.toString()
-		def container = "org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-$javaVersion"
-		logger.info "Using container $container for $project"
-		containers container
-	}
-	jdt.file {
-		beforeMerged  { jdt ->
-		  File defaultProperties = new File("${rootProject.projectDir}/gradle/defaultEclipseJdtPrefs.properties").absoluteFile
-		  logger.info "Load defaults from $defaultProperties for $project"
-		  jdt.load(defaultProperties)
-		}
-	}
-}
