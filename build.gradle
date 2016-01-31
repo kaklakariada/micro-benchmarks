@@ -1,9 +1,10 @@
 plugins {
     id "com.github.hierynomus.license" version "0.12.1"
+    id 'me.champeau.gradle.jmh' version '0.2.0'
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'me.champeau.gradle.jmh'
 
 repositories {
     jcenter()
@@ -17,14 +18,13 @@ tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
 
-test {
-	if(logger.infoEnabled) {
-		testLogging.showStandardStreams = true
-	}
-	jvmArgs '-XX:+HeapDumpOnOutOfMemoryError', '-enableassertions'
+jmh {
+    jmhVersion = '1.11.3'
 }
 
 dependencies {
+    compile "org.openjdk.jmh:jmh-core:${jmh.jmhVersion}"
+    compile "org.openjdk.jmh:jmh-generator-annprocess:${jmh.jmhVersion}"
 }
 
 license {
