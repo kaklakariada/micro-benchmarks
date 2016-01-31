@@ -13,7 +13,8 @@ Some Java micro benchmarks
 
 ```
 Benchmark                             Mode  Cnt    Score    Error  Units
-ReflectionBenchmark.direct            avgt    5    4,689 ±  0,649  ns/op
-ReflectionBenchmark.reflection        avgt    5  218,367 ± 11,523  ns/op
-ReflectionBenchmark.reflectionCached  avgt    5   11,723 ±  4,839  ns/op
+ReflectionBenchmark.direct            avgt    5    4,850 ±  0,238  ns/op
+ReflectionBenchmark.directNotInlined  avgt    5    6,146 ±  0,332  ns/op
+ReflectionBenchmark.reflection        avgt    5  227,670 ± 16,882  ns/op
+ReflectionBenchmark.reflectionCached  avgt    5   11,478 ±  2,940  ns/op
 ```

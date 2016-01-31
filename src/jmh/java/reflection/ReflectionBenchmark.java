@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.CompilerControl;
 import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
@@ -33,6 +34,12 @@ public class ReflectionBenchmark {
 
     @Benchmark
     public Integer direct() {
+        return instance.getInteger();
+    }
+
+    @Benchmark
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
+    public Integer directNotInlined() {
         return instance.getInteger();
     }
 
